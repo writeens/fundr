@@ -1,0 +1,79 @@
+.Fundr {
+    height: 80%;
+    width: 70%;
+    display: flex;
+}
+.Fundr-sidebar {
+    font-family: Montserrat;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: #0c243b;
+    color: white;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1),
+    inset 0 0 25px #143e66;
+    z-index: 2;
+}
+.Fundr-sidebar span {
+    font-family: Lato;
+    font-style: italic;
+}
+.Fundr-sidebar i {
+    font-size: 3rem;
+}
+.Fundr-sidebar-title {
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    line-height: 0.3rem;
+}
+.Fundr-main {
+    position: relative;
+    font-family: Montserrat;
+    width: 70%;
+    height: 95%;
+    align-self: center;
+    background: white;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+}
+.Fundr-main-switch {
+    display: flex;
+}
+.Fundr-main-switch button {
+    background-color: #9ab3c5;
+    width: 100%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+.Fundr-main-switch button:focus {
+    background-color: #0c243b;
+    outline: none;
+}
+
+@media screen and (max-width: 800px){
+    .Fundr{
+        flex-direction: column;
+    }
+    .Fundr-sidebar {
+        width: 100%;
+        flex-direction: row;
+    }
+    .Fundr-sidebar i {
+        font-size: 2rem;
+        align-self: center;
+        margin-right: 0.5rem;
+    }
+    .Fundr-sidebar-title {
+        margin-left: 0.5rem;
+    }
+    .Fundr-main {
+        width: 100%;
+        padding-top: 1rem;
+    }
+    
+}
