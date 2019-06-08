@@ -65,7 +65,7 @@
     .TransferForm > div > label {
         width: 100%;
         text-align: left;
-        padding: 0.2rem 0 0.5rem 0;
+        padding: 0 0 0.4rem 0;
     }
     .TransferForm div input, .TransferForm div select {
         width: 100%;
