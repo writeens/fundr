@@ -1,0 +1,76 @@
+.TransferForm {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding: 0.5rem;
+}
+.TransferForm > div {
+    padding: 0.5rem;
+    margin: 0.5rem 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+.TransferForm > div >label {
+    align-self: center;
+    text-align: left;
+    padding-left: 1.5rem;
+    width: 30%;
+}
+.TransferForm > div > input, .TransferForm > div > select {
+    width: 70%;
+    font-family: Muli, sans-serif;
+    padding: 0.8rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.TransferForm div input:disabled{
+    background-color: white;
+    cursor:not-allowed;
+}
+#TransferForm-button {
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+#TransferForm-button button {
+    margin: 0;
+    cursor: pointer;
+    background-color: #9ab3c5;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: black; 
+}
+#TransferForm-button button:hover {
+    background-color: #0c243b;
+    color: white;
+}
+.TransferForm-ac-loader {
+    align-self: center;
+    position: relative;
+    right: 30px;
+    margin: 0;
+    width: 0;
+}
+@media screen and (max-width: 800px){
+    .TransferForm > div {
+        flex-direction: column;
+        padding: 0;
+    }
+    .TransferForm > div > label {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+    }
+    .TransferForm div input, .TransferForm div select {
+        width: 100%;
+        padding: 0.3rem;
+    }
+    #TransferForm-button {
+        padding: 0;
+    }
+}
