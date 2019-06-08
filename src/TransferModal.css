@@ -1,0 +1,136 @@
+.wrapper {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 3;
+    width: 100%;
+    background-color:rgba(253, 253, 253, 0.85);
+}
+.Modal {
+    padding: 1rem;
+    color: #0c243b;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+}
+.Modal-text{
+    margin: 1rem;
+}
+.Modal-form {
+    margin: 1rem;
+}
+.Modal-form > input {
+    font-family: Muli, sans-serif;
+    padding: 0.8rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.Modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+.Modal-buttons button {
+    margin: 0.5rem 0.8rem;
+    cursor: pointer;
+    background-color: #9ab3c5;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: black; 
+}
+.Modal-buttons button:hover {
+    background-color: #0c243b;
+    color: white;
+}
+#Modal-cancel {
+    background-color: rgb(189, 35, 35);
+}
+.Modal-success {
+    font-family: Muli, sans-serif;
+    font-size: 2rem;
+    font-style: italic;
+}
+.Modal-success-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Modal-success-details svg{
+    margin-left: auto;
+    margin-right: auto;
+}
+.Modal-success-details button {
+    width: fit-content;
+    margin: 0.5rem auto 0.5rem auto;
+    cursor: pointer;
+    background-color: #9ab3c5;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: black; 
+}
+.Modal-success-details button:hover {
+    background-color: #0c243b;
+    color: white;
+}
+/* 
+49.497474670410156 is the calculated length of the animated tick 
+First we display the tick, so we get a static tick for >IE11 which doesn't support animation well.
+
+Then we hide it, and animate it on modern browsers
+*/
+.path-tick {
+    stroke-dasharray: 49.497474670410156;
+    stroke-dashoffset: 0;
+    animation: dash 1s linear forwards;
+    animation-delay: 2s;
+    stroke-opacity: 1;
+    transition: stroke-opacity 0.1s step;
+  }
+
+  
+  /*   delay-time before animation */
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 49.497474670410156;
+      stroke-opacity: 1;
+    }
+    60% {
+      stroke-dashoffset: 49.497474670410156;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      stroke-opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 800px){
+    .Modal {
+        padding: 0;
+    }
+    .Modal-form {
+        width: 100%;
+        margin: 0.5rem 0 0.5rem 0;
+    }
+    .Modal-text {
+        margin: 0.5rem 0 0.5rem 0;
+        line-height: 1.8rem;
+    }
+    .Modal-form > input {
+        margin: auto;
+    }
+    .Modal-form > label {
+        display: none;
+    }
+    .Modal-buttons {
+       justify-content: space-around;
+    }
+}
+  
