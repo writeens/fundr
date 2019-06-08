@@ -13,7 +13,7 @@ import "./TransferForm.css";
  */
 let axios_pay = axios.create({
     baseURL: "https://api.paystack.co",
-    headers: {"Authorization": `Bearer ${process.env.REACT_APP_SECRET_API_KEY}`}
+    headers: {"Authorization": `Bearer ${process.env.SECRET_API}`}
 })
 
 // Component class 
