@@ -11,6 +11,7 @@
 
 @media screen and (max-width: 800px){
   .App {
+    background:white;
     align-items: initial;
     justify-content: initial;
   }
