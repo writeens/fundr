@@ -128,14 +128,14 @@ class TransferForm extends Component {
         return(
             <form onSubmit={this.handleSubmit} className="TransferForm">
                 <div>
-                    <label htmlFor="bankInfo">Bank: </label>
+                    <label htmlFor="bankInfo">Bank</label>
                     <select value={this.state.bankCode} onChange={this.handleSelect}>
                         <option disabled value="">Select a Bank</option>
                         {this.state.banks.map(bank => <option key={bank.id} value={bank.code}>{bank.name}</option>)}
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="accountNo">Account No: </label>
+                    <label htmlFor="accountNo">Account No</label>
                     <input 
                         type="text"
                         name="accountNo"
@@ -147,7 +147,7 @@ class TransferForm extends Component {
                     />
                 </div>
                 <div>
-                    <label htmlFor="accountName">Account Name: </label>
+                    <label htmlFor="accountName">Account Name</label>
                     <input 
                         type="text"
                         id="accountName"
@@ -161,7 +161,7 @@ class TransferForm extends Component {
                     </div> : null}
                 </div>
                 <div>
-                    <label htmlFor="amount">Amount: </label>
+                    <label htmlFor="amount">Amount</label>
                     <input 
                         type="text"
                         name="amount"
