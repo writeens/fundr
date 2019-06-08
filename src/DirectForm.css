@@ -1,0 +1,68 @@
+.DirectForm {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+.DirectForm > div {
+    display: flex;
+    margin: 0.5rem 0.5rem;
+    padding: 0.5rem;
+    justify-content: flex-start;
+}
+.DirectForm div label {
+    align-self: center;
+    width: 30%;
+    text-align: left;
+    padding-left: 1.5rem;
+}
+.DirectForm div input, .DirectForm div select {
+    font-family: Muli, sans-serif;
+    width: 70%;
+    padding: 0.8rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.DirectForm div input:disabled{
+    background-color: white;
+    cursor:not-allowed;
+}
+#DirectForm-button {
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+#DirectForm-button button {
+    margin: 0;
+    cursor: pointer;
+    background-color: #9ab3c5;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: black; 
+}
+#DirectForm-button button:hover {
+    background-color: #0c243b;
+    color: white;
+}
+@media screen and (max-width: 800px){
+    .DirectForm > div {
+        flex-direction: column;
+        padding: 0;
+    }
+    .DirectForm > div > label {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+    }
+    .DirectForm div input, .DirectForm div select {
+        width: 100%;
+        padding: 0.3rem;
+    }
+    #DirectForm-button {
+        padding: 0;
+    }
+}
