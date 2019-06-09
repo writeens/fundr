@@ -1,35 +1,58 @@
+/**
+ * This Component handles the modal upon transfer.
+ */
 import React, { Component } from 'react';
 import "./TransferModal.css";
 
+// Component class
 class TransferModal extends Component {
     constructor(props){
         super(props);
 
+        /**
+         * Initial state set and all methods used are bound
+         */
         this.state = {otp: ""}
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleClear = this.handleClear.bind(this);
+        this.renderModal = this.renderModal.bind(this);
     }
 
+    /**
+     * 
+     * It also validates the otp and ensures it is made up of numbers only
+     */
     handleChange(evt){
-        this.setState({otp: evt.target.value})
+        let regex = /^[0-9]*$/g
+        if(regex.test(evt.target.value)){
+            this.setState({otp: evt.target.value})
+        } else {
+            this.setState({otp: this.state.otp})
+        }
+        
     }
+    /**
+     * This handles the submitting of the otp to the Parent Component
+     */
     handleSubmit(evt){
-        evt.preventDefault()
+        evt.preventDefault();
         this.props.finalizeTransfer(this.state.otp)
     }
+    /**
+     * Closes modal
+     */
     handleClose(){
         this.props.closeModal()
     }
     handleClear(){
         this.props.clear()
     }
-    render(){
-        return(
-            <div className="wrapper">
-                    {(this.props.success) ?
-                        <div className="Modal">
+    renderModal(){
+        if(this.props.success){
+            return(
+                <div className="Modal">
                             <div className="Modal-success">Success</div>
                             <div className="Modal-success-details">
                                 <svg
@@ -58,8 +81,17 @@ class TransferModal extends Component {
                                 </svg>
                                 <button className="Modal-cancel" onClick={this.handleClear}>Close</button>
                             </div>
-                        </div> :
-                        <div className="Modal">
+                        </div>
+            )
+        } else if(this.props.finalize || this.props.loading){
+            return(
+                <div className="TransferModal-loader">
+                    <i className="fas fa-spinner fa-spin"></i>
+                </div>
+            )
+        } else {
+            return (
+                <div className="Modal">
                             <div className="Modal-text">
                         {`You are about to transfer
                         NGN ${this.props.amount}
@@ -77,6 +109,7 @@ class TransferModal extends Component {
                         placeholder="Enter OTP"
                         onChange={this.handleChange}
                         required
+                        maxLength={6}
                         />
                         <div className="Modal-buttons">
                             <button id="Modal-cancel" onClick={this.handleClose}>Cancel</button>
@@ -84,7 +117,16 @@ class TransferModal extends Component {
                         </div>
                     </form>
                         </div>
-                    }
+            )
+        }
+    }
+    /**
+     * Renders <TransferModal />
+     */
+    render(){
+        return(
+            <div className="wrapper">
+                   {this.renderModal()}
             </div>
         )
     }

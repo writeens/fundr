@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   font-family: Montserrat, sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
 @media screen and (max-width: 800px){
   .App {
     background:white;
-    align-items: initial;
-    justify-content: initial;
+    align-items:normal;
+    justify-content: normal;
   }
 }

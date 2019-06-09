@@ -4,9 +4,9 @@
  */
 
 // Imports
-import React, { Component } from 'react'
-import axios from "axios"
-import "./DirectForm.css"
+import React, { Component } from 'react';
+import axios from "axios";
+import "./DirectForm.css";
 
 /**
  * create instance of axios library with authentication
@@ -35,7 +35,7 @@ class DirectForm extends Component {
      */
     componentDidMount(){
         axios_pay.get("/transferrecipient").then(res => {
-            let allRecipients = res.data.data
+            let allRecipients = res.data.data;
             this.setState({recipients: allRecipients});
         })
     }
@@ -63,7 +63,13 @@ class DirectForm extends Component {
      * 
      */
     handleAmount(evt){
-        this.setState({amount: evt.target.value})
+        let regex = /^[0-9]*$/g
+        if(regex.test(evt.target.value)){
+            this.setState({amount: evt.target.value})
+        } else {
+            this.setState({amount: this.state.amount})
+        }
+        
     }
     handleReason(evt){
         this.setState({reason: evt.target.value})
@@ -114,7 +120,7 @@ class DirectForm extends Component {
                         />
                 </div>
                 <div>
-                    <label htmlFor="amount">Amount</label>
+                    <label htmlFor="amount">Amount(NGN)</label>
                     <input 
                         type="text"
                         name="amount"
