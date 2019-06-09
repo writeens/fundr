@@ -26,7 +26,7 @@ class Fundr extends Component {
         /**
          * Initial state set and all methods used are bound
          */
-        this.state={amount:"", recipient:{}, directTransfer:true, isTransferring:false, transferCode:"", success:false, isFinalizing: false, isLoading:false}
+        this.state={amount:"", recipient:{}, directTransfer:true, isTransferring:true, transferCode:"", success:false, isFinalizing: false, isLoading:false}
         this.createRecipient = this.createRecipient.bind(this);
         this.initiateTransfer = this.initiateTransfer.bind(this);
         this.handleDirectTransfer = this.handleDirectTransfer.bind(this);
