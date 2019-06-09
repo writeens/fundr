@@ -10,6 +10,20 @@
     display: flex;
     justify-content: flex-start;
 }
+#accountLine {
+    display: flex;
+    width: 70%;
+}
+#accountLine > input{
+    width: 100%;
+    font-family: Muli, sans-serif;
+    padding: 0.8rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
 .TransferForm > div >label {
     align-self: center;
     text-align: left;
@@ -73,5 +87,8 @@
     }
     #TransferForm-button {
         padding: 0;
+    }
+    #accountLine{
+        width: 100%;
     }
 }

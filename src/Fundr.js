@@ -26,7 +26,7 @@ class Fundr extends Component {
         /**
          * Initial state set and all methods used are bound
          */
-        this.state={amount:"", recipient:{}, directTransfer:true, isTransferring:false, transferCode:"", success:false}
+        this.state={amount:"", recipient:{}, directTransfer:true, isTransferring:false, transferCode:"", success:false, isFinalizing: false, isLoading:false}
         this.createRecipient = this.createRecipient.bind(this);
         this.initiateTransfer = this.initiateTransfer.bind(this);
         this.handleDirectTransfer = this.handleDirectTransfer.bind(this);
@@ -43,6 +43,7 @@ class Fundr extends Component {
      * It also initiates a transfer once recipient has been created
      */
     createRecipient(bankCode, accountName, accountNumber, amount, reason){
+        this.setState({isLoading:true, isTransferring:true})
         axios_pay.post("/transferrecipient", {
             type: accountNumber,
             name: accountName,
@@ -72,7 +73,9 @@ class Fundr extends Component {
         this.setState({
             amount:amount,
             reason: reason,
-            recipient: recipient
+            recipient: recipient,
+            isLoading: true,
+            isTransferring: true
         }, this.initiateTransfer(amount, reason, recipient.recipientCode))
     }
 
@@ -82,17 +85,22 @@ class Fundr extends Component {
      * It updates the state with the transferCode returned. 
      */
     initiateTransfer(amount, reason, rc_code){
+        let tf_amount = parseInt(amount) * 100
         axios_pay.post("/transfer", {
             source: "balance",
-            amount: amount * 100,
+            amount: tf_amount,
             reason: reason,
             recipient: rc_code
         }).then(res => {
             let tf_code = res.data.data.transfer_code
-            this.setState(st => ({
-                isTransferring:true,
-                transferCode: tf_code
-            }))
+            this.setState({isLoading:false}, () => {
+                this.setState({
+                    isTransferring:true,
+                    transferCode: tf_code
+                })
+            })
+        }).catch(err => {
+            alert("Please ensure you have enough funds in your online balance and try again");
         })
     }
     /**
@@ -102,16 +110,18 @@ class Fundr extends Component {
      * 
      */
     finalizeTransfer(otp){
+        this.setState({isFinalizing: true});
         axios_pay.post("/transfer/finalize_transfer", {
             transfer_code: this.state.transferCode,
             otp:otp
         }).then(res => {
             if(res.status === 200){
-                this.setState({success: true}, ()=>{
+                this.setState({isFinalizing: false}, ()=>{
                     this.setState({
                         amount:"",
                         recipient:"",
-                        transferCode:""
+                        transferCode:"",
+                        success:true
                     })
                 })
             }
@@ -182,6 +192,8 @@ class Fundr extends Component {
                                                 clear={this.clear}
                                                 finalizeTransfer={this.finalizeTransfer}
                                                 success={this.state.success}
+                                                finalize={this.state.isFinalizing}
+                                                loading={this.state.isLoading}
                                                 >
                                                 
                                                 </TransferModal> : null}

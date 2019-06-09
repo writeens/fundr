@@ -39,7 +39,6 @@ class TransferForm extends Component {
     componentDidMount(){
         //Using the Banks API
         axios_pay.get("/bank").then(banks => {
-            this.setState({isLoading: true})
             if(banks.status === 200){
                 let allBanks = banks.data.data.map(bank => {
                     return {code: bank.code, name: bank.name, id: bank.id, type: bank.type}
@@ -64,7 +63,12 @@ class TransferForm extends Component {
      * 
      */
     handleAmount(evt){
-        this.setState({amount: evt.target.value})
+        let regex = /^[0-9]*$/g
+        if(regex.test(evt.target.value)){
+            this.setState({amount: evt.target.value})
+        } else {
+            this.setState({amount: this.state.amount})
+        }
     }
     handleReason(evt){
         this.setState({reason: evt.target.value})
@@ -148,20 +152,22 @@ class TransferForm extends Component {
                 </div>
                 <div>
                     <label htmlFor="accountName">Account Name</label>
-                    <input 
-                        type="text"
-                        id="accountName"
-                        name="accountName"
-                        defaultValue={this.state.accountName}
-                        disabled
-                    />
-                    {(this.state.isVerifying) ? 
-                    <div className="TransferForm-ac-loader">
-                        <i className="fas fa-spinner fa-spin"></i>
-                    </div> : null}
+                    <div id="accountLine">
+                        <input 
+                            type="text"
+                            id="accountName"
+                            name="accountName"
+                            defaultValue={this.state.accountName}
+                            disabled
+                        />
+                        {(this.state.isVerifying) ? 
+                        <div className="TransferForm-ac-loader">
+                            <i className="fas fa-spinner fa-spin"></i>
+                        </div> : null}
+                    </div>
                 </div>
                 <div>
-                    <label htmlFor="amount">Amount</label>
+                    <label htmlFor="amount">Amount(NGN)</label>
                     <input 
                         type="text"
                         name="amount"

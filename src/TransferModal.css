@@ -90,7 +90,7 @@ Then we hide it, and animate it on modern browsers
     stroke-dasharray: 49.497474670410156;
     stroke-dashoffset: 0;
     animation: dash 1s linear forwards;
-    animation-delay: 2s;
+    animation-delay: 1s;
     stroke-opacity: 1;
     transition: stroke-opacity 0.1s step;
   }
@@ -110,6 +110,11 @@ Then we hide it, and animate it on modern browsers
       stroke-opacity: 1;
     }
   }
+  .TransferModal-loader {
+    align-self: center;
+    font-size: 3rem;
+    margin: 0;
+}
 
   @media screen and (max-width: 800px){
     .Modal {
