@@ -126,7 +126,6 @@ Then we hide it, and animate it on modern browsers
     }
     .Modal-text {
         margin: 1rem 1.8rem;
-        border: 1px solid red;
         line-height: 1.8rem;
     }
     .Modal-form > input {
