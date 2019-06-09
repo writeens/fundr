@@ -58,8 +58,9 @@
     .Fundr{
         flex-direction: column;
         width: 100%;
+        min-height: 100vh;
         height: 100vh;
-        padding: 0.1rem 0.2rem 0 0.2rem;
+        padding: 0 0.2rem 0 0.2rem;
     }
     .Fundr-sidebar {
         padding: 0.5rem 0 0.5rem 0;
