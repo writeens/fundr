@@ -53,7 +53,7 @@ class TransferModal extends Component {
         if(this.props.success){
             return(
                 <div className="Modal">
-                            <div className="Modal-success">Success</div>
+                            <div className="Modal-success">Transfer Completed</div>
                             <div className="Modal-success-details">
                                 <svg
                                     version="1.1"
